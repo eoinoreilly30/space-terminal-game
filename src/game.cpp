@@ -20,38 +20,37 @@ Game::Game() {
 }
 
 void Game::run() {
-    int in_char;
-    bool exit = false;
+    position ship_pos = {20, 20};
+    char ship_body[4][5] = {
+        {' ', ' ', '|', ' ', ' '},
+        {' ', '/', '_', '\\', ' ' },
+        {'|', ' ', ' ', ' ', '|'},
+        {'|', '-', '-', '-', '|'}
+    };
 
-    vec2i ship_pos = {20, 20};
-    char** ptr;
-
-    Ship ship(ptr, 4, 5, ship_pos);
+    Sprite ship(ship_body, 4, 5, ship_pos);
 
     while(1) {
-        in_char = wgetch(wnd);
+        bool exit = false;
+        int keyboard_in = wgetch(wnd);
 
         ship.clear();
 
-        switch(in_char) {
+        switch(keyboard_in) {
             case 'q':
             exit = true;
             break;
             case KEY_UP:
-            case 'w':
-            ship.incY();
+            ship.incY(1);
             break;
             case KEY_DOWN:
-            case 's':
-            ship.decY();
+            ship.decY(1);
             break;
             case KEY_LEFT:
-            case 'a':
-            ship.decX();
+            ship.decX(1);
             break;
             case KEY_RIGHT:
-            case 'd':
-            ship.incX();
+            ship.incX(1);
             break;
             default:
             break;

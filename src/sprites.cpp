@@ -1,28 +1,21 @@
 #include "sprites.h"
 #include <ncurses.h>
 
-Sprite::Sprite(char **_body, int _rows, int _cols, vec2i _pos) {
-	body = _body;
-	rows = _rows;
-	cols = _cols;
-	pos = _pos;
-}
-
 // possibly overload the + operator
-void Sprite::incX() {
-	pos.x += 1;
+void Sprite::incX(int amount) {
+	pos.x += amount;
 }
 
-void Sprite::decX() {
-	pos.x -= 1;
+void Sprite::decX(int amount) {
+	pos.x -= amount;
 }
 
-void Sprite::incY() {
-	pos.y += 1;
+void Sprite::incY(int amount) {
+	pos.y += amount;
 }
 
-void Sprite::decY() {
-	pos.y -= 1;
+void Sprite::decY(int amount) {
+	pos.y -= amount;
 }
 
 void Sprite::draw() {
